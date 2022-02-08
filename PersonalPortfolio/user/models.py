@@ -1,7 +1,10 @@
+from audioop import maxpp
 from operator import mod
+from pydoc import describe
 from pyexpat import model
 from turtle import color
 from django.db import models
+from django.shortcuts import render
 
 # Create your models here.
 
@@ -58,3 +61,20 @@ class Services(models.Model):
 
     def __str__(self) -> str:
         return self.title
+        
+class Educations(models.Model):
+    time=models.CharField(max_length=100)
+    degree=models.CharField(max_length=100)
+    description= models.TextField()
+
+    def __str__(self) -> str:
+        return f'{str(self.time)} | {str(self.degree)}'
+
+
+class JobExperience (models.Model):
+    time=models.CharField(max_length=100)
+    jobTitle=models.CharField(max_length=100)
+    description= models.TextField()
+
+    def __str__(self) -> str:
+        return f'{str(self.time)} | {str(self.jobTitle)}'
