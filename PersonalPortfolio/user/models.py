@@ -78,3 +78,23 @@ class JobExperience (models.Model):
 
     def __str__(self) -> str:
         return f'{str(self.time)} | {str(self.jobTitle)}'
+
+class Resent_work_category(models.Model):
+    category=models.CharField(max_length=200)
+    def __str__(self):
+        return self.category
+
+class Resent_work(models.Model):
+    category=models.ForeignKey(Resent_work_category,models.CASCADE)
+    title=models.CharField(max_length=200)
+    thumbnail_img=models.FileField(upload_to='media/work/thumbnail')
+    popup_img=models.FileField(upload_to='media/work/popup_thumbnail')
+    popup_heding=models.CharField(max_length=100)
+    popup_description_one=models.CharField(max_length=300)
+    popup_description_two=models.CharField(max_length=300)
+    popup_product_link=models.CharField(max_length=200)
+
+    def __str__(self):
+        return f'{str(self.category)} | {str(self.title)}'
+
+
